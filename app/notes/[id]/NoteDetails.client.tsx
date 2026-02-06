@@ -8,12 +8,19 @@ type Props = {
 };
 
 const NoteDetailsClient = ({ noteId }: Props) => {
-  const { data: note} = useQuery({
+  const { data: note,isError,isLoading } = useQuery({
     queryKey: ["note", noteId],
     queryFn: () => fetchNoteById(noteId),
     refetchOnMount: false,
   });
+    if (isLoading) {
+    return <p>Loading, please wait...</p>
+  }
+  if (isError || !note) {
+    return <p>Something went wrong.</p>
+  }
   return (
+    
     <div className={css.container}>
       <div className={css.item}>
         <div className={css.header}>
