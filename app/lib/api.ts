@@ -6,7 +6,7 @@ export interface FetchNotesResponse{
     totalPages:number
 }
 
-const NEXT_NOTE_TOKEN=process.env.NEXT_PUBLIC_NOTEHUB_TOKEN
+const NEXT_PUBLIC_NOTE_TOKEN=process.env.NEXT_PUBLIC_NOTEHUB_TOKEN
 export const fetchNotes = async (
     search?:string,
     page: number = 1,
@@ -20,7 +20,7 @@ export const fetchNotes = async (
         },
          headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${NEXT_NOTE_TOKEN}`,
+      Authorization: `Bearer ${NEXT_PUBLIC_NOTE_TOKEN}`,
     },
     })
     return response.data;
@@ -34,7 +34,7 @@ export const createNote = async (newNote:CreateNotePayload):Promise<Note>=>{
     const {data} = await axios.post<Note>("https://notehub-public.goit.study/api/notes", 
         newNote,
          {headers:{
-            Authorization: `Bearer ${NEXT_NOTE_TOKEN}`,
+            Authorization: `Bearer ${NEXT_PUBLIC_NOTE_TOKEN}`,
          }
         }
     )
@@ -44,7 +44,7 @@ export const createNote = async (newNote:CreateNotePayload):Promise<Note>=>{
 export const deleteNote = async (id:string):Promise<Note> =>{
     const {data} = await axios.delete<Note>(`https://notehub-public.goit.study/api/notes/${id}`, 
         {headers:{
-            Authorization: `Bearer ${NEXT_NOTE_TOKEN}`,
+            Authorization: `Bearer ${NEXT_PUBLIC_NOTE_TOKEN}`,
          }
         }
     )
@@ -56,7 +56,7 @@ export const deleteNote = async (id:string):Promise<Note> =>{
 export const fetchNoteById = async (id: string): Promise<Note> => {
 const res = await axios.get<Note>(`https://notehub-public.goit.study/api/notes/${id}`,
     {headers:{
-            Authorization: `Bearer ${NEXT_NOTE_TOKEN}`,
+            Authorization: `Bearer ${NEXT_PUBLIC_NOTE_TOKEN}`,
          }
         }
 );
