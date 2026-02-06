@@ -7,6 +7,7 @@ export interface FetchNotesResponse{
 }
 
 const NEXT_PUBLIC_NOTE_TOKEN=process.env.NEXT_PUBLIC_NOTEHUB_TOKEN
+
 export const fetchNotes = async (
     search?:string,
     page: number = 1,
