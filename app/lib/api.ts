@@ -50,7 +50,15 @@ export const deleteNote = async (id:string):Promise<Note> =>{
     )
     return data
 }
-export const fetchNoteById = async (id:string): Promise<Note>=>{
-    const res = await axios.get<Note>(`/notes/${id}`);
+
+
+
+export const fetchNoteById = async (id: string): Promise<Note> => {
+const res = await axios.get<Note>(`https://notehub-public.goit.study/api/notes/${id}`,
+    {headers:{
+            Authorization: `Bearer ${NEXT_NOTE_TOKEN}`,
+         }
+        }
+);
   return res.data;
-}
+};

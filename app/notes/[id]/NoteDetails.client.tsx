@@ -13,9 +13,6 @@ const NoteDetailsClient = ({ noteId }: Props) => {
     queryFn: () => fetchNoteById(noteId),
     refetchOnMount: false,
   });
-if (!note) {
-    return null;
-  }
   return (
     <div className={css.container}>
       <div className={css.item}>
